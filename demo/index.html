@@ -1,0 +1,85 @@
+<!doctype html>
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <link rel="import" href="../horizontal-bar.html">
+</head>
+
+<body unresolved>
+  <template is="dom-bind" id="demo">
+    <p>Name: One Hundred Percent</p>
+    <p>Count: 500</p>
+    <p>Width: 100</p>
+    <p>Toggle Property: toggle</p>
+    <p>Toggle Listener: { toggle: function() { console.log('Selected:  ' + selected); } }</p>
+    <p>Selected: [[selected]]</p>
+
+    <horizontal-bar
+      name="One Hundred Percent"
+      count="500"
+      width="100"
+      selected="{{selected}}"
+      toggle-property="toggle"
+      toggle-listener="[[toggleListener]]">
+    </horizontal-bar>
+
+    <p>Name: Fifty Percent</p>
+    <p>Count: 250</p>
+    <p>Width: 50</p>
+    <p>Selected: [[selected2]]</p>
+
+    <horizontal-bar
+      name="Fifty Percent"
+      count="250"
+      width="50"
+      selected="{{selected2}}">
+    </horizontal-bar>
+
+    <p>Name: Ten Percent</p>
+    <p>Count: 50</p>
+    <p>Width: 10</p>
+    <p>Selected: [[selected3]]</p>
+
+    <horizontal-bar
+      name="Ten Percent"
+      count="50"
+      width="10"
+      selected="{{selected3}}">
+    </horizontal-bar>
+
+    <p>Name: Zero Percent</p>
+    <p>Count: 0</p>
+    <p>Width: 0</p>
+    <p>Selected: [[selected4]]</p>
+
+    <horizontal-bar
+      name="Zero Percent"
+      count="0"
+      width="0"
+      selected="{{selected4}}">
+    </horizontal-bar>
+  </template>
+  <script>
+    (function(document) {
+      var demo = document.querySelector('#demo');
+      demo.toggleListener = {
+        toggle: function() {
+          console.log('Selected:  ' + demo.selected);
+        }
+      }
+    })(document);
+  </script>
+</body>
+</html>

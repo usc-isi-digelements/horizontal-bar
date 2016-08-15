@@ -1,0 +1,149 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link rel="import" href="../horizontal-bar.html">
+</head>
+
+<body>
+  <test-fixture id="horizontal-bar-fixture">
+    <template>
+      <horizontal-bar></horizontal-bar>
+    </template>
+  </test-fixture>
+
+  <script>
+    suite('horizontal-bar tests', function() {
+      var component;
+
+      setup(function() {
+        component = fixture('horizontal-bar-fixture');
+        component.name = 'myName';
+        component.count = 500;
+        component.width = 100;
+      });
+
+      test('properties are set to correct values', function() {
+        expect(component.name).to.equal('myName');
+        expect(component.count).to.equal(500);
+        expect(component.width).to.equal(100);
+        expect(component.selected).to.be.false;
+        expect(component.toggleProperty).to.equal('onToggle');
+        expect(component.toggleListener).to.be.an('Object');
+        expect(component.toggleListener.onToggle).to.be.a('Function');
+      });
+
+      test('does have a paper-checkbox', function() {
+        var checkbox = component.$$('paper-checkbox');
+        expect(checkbox).to.exist;
+        expect(checkbox.name).to.equal('myName');
+        expect(checkbox.checked).to.be.false;
+      });
+
+      test('does have a bar', function() {
+        var bar = component.$$('.bar');
+        expect(bar).to.exist;
+        expect(bar.style.width).to.equal('100%');
+      });
+
+      test('onToggle does toggle selected', function() {
+        component.onToggle();
+        expect(component.selected).to.be.true;
+        component.onToggle();
+        expect(component.selected).to.be.false;
+      });
+
+      test('onToggle does call toggleListener.onToggle', function(done) {
+        component.toggleListener = {
+          onToggle: function() {
+            done();
+          }
+        };
+        flush(function() {
+          component.onToggle();
+        });
+      });
+
+      test('changing the checkbox does call toggleListener.onToggle', function(done) {
+        component.toggleListener = {
+          onToggle: function() {
+            done();
+          }
+        };
+        flush(function() {
+          component.$$('paper-checkbox').fire('change');
+        });
+      });
+    });
+
+    suite('horizontal-bar tests with custom listener', function() {
+      var component;
+
+      setup(function() {
+        component = fixture('horizontal-bar-fixture');
+        component.name = 'mySecondName';
+        component.count = 5;
+        component.width = 50;
+        component.toggleProperty = 'myProperty';
+        component.toggleListener = {
+          myProperty: function() {}
+        };
+      });
+
+      test('properties are set to correct values', function() {
+        expect(component.name).to.equal('mySecondName');
+        expect(component.count).to.equal(5);
+        expect(component.width).to.equal(50);
+        expect(component.selected).to.be.false;
+        expect(component.toggleProperty).to.equal('myProperty');
+        expect(component.toggleListener).to.be.an('Object');
+        expect(component.toggleListener.myProperty).to.be.a('Function');
+      });
+
+      test('does have a paper-checkbox', function() {
+        var checkbox = component.$$('paper-checkbox');
+        expect(checkbox).to.exist;
+        expect(checkbox.name).to.equal('mySecondName');
+        expect(checkbox.checked).to.be.false;
+      });
+
+      test('does have a bar', function() {
+        var bar = component.$$('.bar');
+        expect(bar).to.exist;
+        expect(bar.style.width).to.equal('50%');
+      });
+
+      test('onToggle does toggle selected', function() {
+        component.onToggle();
+        expect(component.selected).to.be.true;
+        component.onToggle();
+        expect(component.selected).to.be.false;
+      });
+
+      test('onToggle does call toggleListener[toggleProperty]', function(done) {
+        component.toggleListener = {
+          myProperty: function() {
+            done();
+          }
+        };
+        flush(function() {
+          component.onToggle();
+        });
+      });
+
+      test('changing the checkbox does call toggleListener[toggleProperty]', function(done) {
+        component.toggleListener = {
+          myProperty: function() {
+            done();
+          }
+        };
+        flush(function() {
+          component.$$('paper-checkbox').fire('change');
+        });
+      });
+    });
+  </script>
+</body>
+</html>

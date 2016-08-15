@@ -1,0 +1,167 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../paper-checkbox/paper-checkbox.html">
+
+<!--
+A polymer web component that shows a stylized button.
+
+Example:
+
+        <horizontal-bar
+          name="Test"
+          count="123"
+          width="50"
+          toggle-listener="[[listener]]">
+        </horizontal-bar>
+
+Custom mixins:
+
+        --horizontal-bar-color
+        --horizontal-bar-count-color
+        --horizontal-bar-height
+        --horizontal-bar-title-color
+
+@demo demo/index.html
+-->
+
+<dom-module id="horizontal-bar">
+  <template>
+    <style include="iron-flex iron-flex-alignment"></style>
+
+    <style>
+      :host {
+        display: block;
+      }
+
+      .row-wrapper {
+        margin-top: 4px;
+      }
+
+      .bar-checkbox {
+        --paper-checkbox-label-spacing: 4px;
+        --paper-checkbox-size: 16px;
+        position: relative;
+        top: 2px;
+      }
+
+      .bar-wrapper {
+        height: var(--horizontal-bar-height, 20px);
+        width: 100%;
+        position: relative;
+      }
+
+      .bar {
+        background-color: var(--horizontal-bar-color, --light-primary-color);
+        border-radius: 2px;
+        position: absolute;
+        left: 0;
+        top: 0px;
+        bottom: 0px;
+      }
+
+      .bar-title {
+        color: var(--horizontal-bar-title-color, --primary-text-color);
+        padding: 0 5px;
+        position: relative;
+        text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .bar-count {
+        color: var(--horizontal-bar-count-color, --secondary-text-color);
+        font-weight: bold;
+        padding: 0 5px;
+        position: relative;
+        text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+      }
+    </style>
+
+    <div class="layout horizontal row-wrapper">
+      <paper-checkbox class="bar-checkbox" name="[[name]]" checked="[[selected]]" on-change="onToggle"></paper-checkbox>
+      <div class="layout horizontal center center-justified bar-wrapper">
+        <div class="bar" style$="width: [[width]]%;"></div>
+        <div class="bar-title flex">
+          [[name]]
+        </div>
+        <div class="bar-count flex-none">
+          [[count]]
+        </div>
+      </div>
+    </div>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'horizontal-bar',
+
+      properties: {
+        /**
+         * The name to show on the left of the bar.
+         */
+        name: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * The count to show on the right of the bar.
+         */
+        count: {
+          type: Number,
+          value: 0
+        },
+
+        /**
+         * The width of the bar (between 0 and 100).
+         */
+        width: {
+          type: Number,
+          value: 100
+        },
+
+        /**
+         * Whether the bar's checkbox is selected.
+         */
+        selected: {
+          type: Boolean,
+          value: false,
+          notify: true
+        },
+
+        /**
+         * An object with a function property called if the button is clicked or tapped.
+         * The name of the property in the object is defined in toggleProperty.
+         */
+        toggleListener: {
+          type: Object,
+          value: function() {
+            return {
+              onToggle: function() {}
+            };
+          }
+        },
+
+        /**
+         * The name of the function property in toggleListener.
+         */
+        toggleProperty: {
+          type: String,
+          value: 'onToggle'
+        }
+      },
+
+      /**
+       * Toggles the selected property and calls toggleListener[toggleProperty] whenever the checkbox is toggled.
+       */
+      onToggle: function() {
+        this.set('selected', !this.selected);
+        this.toggleListener[this.toggleProperty]();
+      }
+    });
+  })();
+  </script>
+</dom-module>
