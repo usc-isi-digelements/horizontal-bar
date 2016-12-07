@@ -48,6 +48,15 @@
         expect(bar.style.width).to.equal('100%');
       });
 
+      test('displays name and count', function() {
+        var barTitle = element.$$('.bar-title');
+        var barCount = element.$$('.bar-count');
+        expect(barTitle).to.exist;
+        expect(barCount).to.exist;
+        expect(barTitle.innerText).to.equal('myName');
+        expect(barCount.innerText).to.equal('500');
+      });
+
       test('_onToggle does toggle selected', function() {
         element._onToggle();
         expect(element.selected).to.be.true;
@@ -113,6 +122,15 @@
         var bar = element.$$('.bar');
         expect(bar).to.exist;
         expect(bar.style.width).to.equal('50%');
+      });
+
+      test('displays name and count', function() {
+        var barTitle = element.$$('.bar-title');
+        var barCount = element.$$('.bar-count');
+        expect(barTitle).to.exist;
+        expect(barCount).to.exist;
+        expect(barTitle.innerText).to.equal('mySecondName');
+        expect(barCount.innerText).to.equal('5');
       });
 
       test('_onToggle does toggle selected', function() {
