@@ -3,23 +3,27 @@
 <link rel="import" href="../paper-checkbox/paper-checkbox.html">
 
 <!--
-A polymer web component that shows a stylized button.
+A Polymer Element showing a sized, labeled, colored bar.
 
-Example:
+### Example
 
-        <horizontal-bar
-          name="Test"
-          count="123"
-          width="50"
-          toggle-listener="[[listener]]">
-        </horizontal-bar>
+    <horizontal-bar
+        name="Test"
+        count="123"
+        width="50"
+        toggle-listener="[[listener]]">
+    </horizontal-bar>
 
-Custom mixins:
+### Styling
 
-        --horizontal-bar-color
-        --horizontal-bar-count-color
-        --horizontal-bar-height
-        --horizontal-bar-title-color
+`<horizontal-bar>` provides the following custom properties and mixins for styling:
+
+Custom property                | Description                   | Default
+-------------------------------|-------------------------------|-----------------------
+`--horizontal-bar-color`       | The color of the bar.         | --light-primary-color
+`--horizontal-bar-count-color` | The color of the count label. | --secondary-text-color
+`--horizontal-bar-height`      | The height of the bar.        | 20px
+`--horizontal-bar-title-color` | The color of the title label. | --primary-text-color
 
 @demo demo/index.html
 -->
@@ -78,7 +82,7 @@ Custom mixins:
     </style>
 
     <div class="layout horizontal row-wrapper">
-      <paper-checkbox class="bar-checkbox" name="[[name]]" checked="[[selected]]" on-change="onToggle"></paper-checkbox>
+      <paper-checkbox class="bar-checkbox" name="[[name]]" checked="[[selected]]" on-change="_onToggle"></paper-checkbox>
       <div class="layout horizontal center center-justified bar-wrapper">
         <div class="bar" style$="width: [[width]]%;"></div>
         <div class="bar-title flex">
@@ -101,6 +105,9 @@ Custom mixins:
       properties: {
         /**
          * The name to show on the left of the bar.
+         *
+         * @type {String}
+         * @default ''
          */
         name: {
           type: String,
@@ -109,6 +116,9 @@ Custom mixins:
 
         /**
          * The count to show on the right of the bar.
+         *
+         * @type {Number}
+         * @default 0
          */
         count: {
           type: Number,
@@ -117,6 +127,9 @@ Custom mixins:
 
         /**
          * The width of the bar (between 0 and 100).
+         *
+         * @type {Number}
+         * @default 100
          */
         width: {
           type: Number,
@@ -125,6 +138,9 @@ Custom mixins:
 
         /**
          * Whether the bar's checkbox is selected.
+         *
+         * @type {Boolean}
+         * @default false
          */
         selected: {
           type: Boolean,
@@ -135,6 +151,9 @@ Custom mixins:
         /**
          * An object with a function property called if the button is clicked or tapped.
          * The name of the property in the object is defined in toggleProperty.
+         *
+         * @type {Object}
+         * @default {onToggle: function() {}}
          */
         toggleListener: {
           type: Object,
@@ -147,6 +166,9 @@ Custom mixins:
 
         /**
          * The name of the function property in toggleListener.
+         *
+         * @type {String}
+         * @default 'onToggle'
          */
         toggleProperty: {
           type: String,
@@ -156,8 +178,11 @@ Custom mixins:
 
       /**
        * Toggles the selected property and calls toggleListener[toggleProperty] whenever the checkbox is toggled.
+       *
+       * @event change
+       * @private
        */
-      onToggle: function() {
+      _onToggle: function() {
         this.set('selected', !this.selected);
         this.toggleListener[this.toggleProperty]();
       }
