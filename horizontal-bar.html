@@ -6,13 +6,14 @@
 A Polymer Element showing a sized, labeled, colored bar.
 
 ### Example
-
-    <horizontal-bar
-        name="Test"
-        count="123"
-        width="50"
-        toggle-listener="[[listener]]">
-    </horizontal-bar>
+```html
+<horizontal-bar
+  name="Test"
+  count="123"
+  width="50"
+  toggle-listener="[[listener]]">
+</horizontal-bar>
+```
 
 ### Styling
 
@@ -104,6 +105,8 @@ Custom property                | Description                   | Default
 
       properties: {
         /**
+         * (Optional)
+         *
          * The name to show on the left of the bar.
          *
          * @type {String}
@@ -115,6 +118,8 @@ Custom property                | Description                   | Default
         },
 
         /**
+         * (Optional)
+         *
          * The count to show on the right of the bar.
          *
          * @type {Number}
@@ -126,6 +131,8 @@ Custom property                | Description                   | Default
         },
 
         /**
+         * (Optional)
+         *
          * The width of the bar (between 0 and 100).
          *
          * @type {Number}
@@ -137,6 +144,8 @@ Custom property                | Description                   | Default
         },
 
         /**
+         * (Optional)
+         *
          * Whether the bar's checkbox is selected.
          *
          * @type {Boolean}
@@ -149,6 +158,8 @@ Custom property                | Description                   | Default
         },
 
         /**
+         * (Required)
+         *
          * An object with a function property called if the button is clicked or tapped.
          * The name of the property in the object is defined in toggleProperty.
          *
@@ -165,6 +176,8 @@ Custom property                | Description                   | Default
         },
 
         /**
+         * (Optional)
+         *
          * The name of the function property in toggleListener.
          *
          * @type {String}
