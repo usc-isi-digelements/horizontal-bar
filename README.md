@@ -1,13 +1,13 @@
 # horizontal-bar
 
-A Polymer Element showing a sized, labeled, colored bar.
+A Polymer Element showing a sized, labeled, colored bar and an optional checkbox with custom toggle behavior.
 
 ### Example
 ```html
 <horizontal-bar
   name="Test"
   count="123"
-  width="50"
+  max="456"
   toggle-listener="[[listener]]">
 </horizontal-bar>
 ```

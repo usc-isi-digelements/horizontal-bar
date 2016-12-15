@@ -8,56 +8,71 @@
 
 <body unresolved>
   <template is="dom-bind" id="demo">
-    <p>Name: One Hundred Percent</p>
+    <p>Show Checkbox: true</p>
+    <p>Name: Horizontal Bar With Checkbox</p>
     <p>Count: 500</p>
-    <p>Width: 100</p>
+    <p>Max: 500</p>
     <p>Toggle Property: toggle</p>
     <p>Toggle Listener: { toggle: function() { console.log('Selected:  ' + selected); } }</p>
     <p>Selected: [[selected]]</p>
 
-    <horizontal-bar
-      name="One Hundred Percent"
+    <horizontal-bar show-checkbox
+      name="Horizontal Bar With Checkbox"
       count="500"
-      width="100"
+      max="500"
       selected="{{selected}}"
       toggle-property="toggle"
       toggle-listener="[[toggleListener]]">
     </horizontal-bar>
 
+    <p>Name: One Hundred Percent</p>
+    <p>Count: 500</p>
+    <p>Max: 500</p>
+
+    <horizontal-bar
+      name="One Hundred Percent"
+      count="500"
+      max="500">
+    </horizontal-bar>
+
     <p>Name: Fifty Percent</p>
     <p>Count: 250</p>
-    <p>Width: 50</p>
-    <p>Selected: [[selected2]]</p>
+    <p>Max: 500</p>
 
     <horizontal-bar
       name="Fifty Percent"
       count="250"
-      width="50"
-      selected="{{selected2}}">
+      max="500">
     </horizontal-bar>
 
     <p>Name: Ten Percent</p>
     <p>Count: 50</p>
-    <p>Width: 10</p>
-    <p>Selected: [[selected3]]</p>
+    <p>Max: 500</p>
 
     <horizontal-bar
       name="Ten Percent"
       count="50"
-      width="10"
-      selected="{{selected3}}">
+      max="500">
+    </horizontal-bar>
+
+    <p>Name: One Percent</p>
+    <p>Count: 1</p>
+    <p>Max: 500</p>
+
+    <horizontal-bar
+      name="One Percent"
+      count="1"
+      max="500">
     </horizontal-bar>
 
     <p>Name: Zero Percent</p>
     <p>Count: 0</p>
-    <p>Width: 0</p>
-    <p>Selected: [[selected4]]</p>
+    <p>Max: 500</p>
 
     <horizontal-bar
       name="Zero Percent"
       count="0"
-      width="0"
-      selected="{{selected4}}">
+      max="500">
     </horizontal-bar>
   </template>
   <script>

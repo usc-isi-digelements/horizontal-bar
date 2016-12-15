@@ -18,21 +18,25 @@
     suite('horizontal-bar tests', function() {
       var element;
 
-      setup(function() {
+      setup(function(done) {
         element = fixture('horizontal-bar-fixture');
+        element.showCheckbox = true;
         element.name = 'myName';
         element.count = 500;
-        element.width = 100;
+        element.max = 500;
+        flush(done);
       });
 
       test('properties are set to correct values', function() {
+        expect(element.showCheckbox).to.be.true;
         expect(element.name).to.equal('myName');
         expect(element.count).to.equal(500);
-        expect(element.width).to.equal(100);
+        expect(element.max).to.equal(500);
         expect(element.selected).to.be.false;
         expect(element.toggleProperty).to.equal('onToggle');
         expect(element.toggleListener).to.be.an('Object');
         expect(element.toggleListener.onToggle).to.be.a('Function');
+        expect(element._width).to.equal(100);
       });
 
       test('does have a paper-checkbox', function() {
@@ -85,30 +89,60 @@
           element.$$('paper-checkbox').fire('change');
         });
       });
+
+      test('_computeWidth returns correct widths', function() {
+        expect(element._computeWidth(4, 4)).to.equal(100);
+        expect(element._computeWidth(3, 4)).to.equal(75);
+        expect(element._computeWidth(2, 4)).to.equal(50);
+        expect(element._computeWidth(1, 4)).to.equal(25);
+      });
+
+      test('_computeWidth returns correct width if calculated width is 0 but count is not', function() {
+        expect(element._computeWidth(1, 100000000)).to.equal(1);
+      });
+
+      test('_computeWidth returns correct width if item.count is 0', function() {
+        expect(element._computeWidth(0, 100000000)).to.equal(0);
+      });
+
+      test('changing the max changes the width of the bar', function(done) {
+        element.max = 1000;
+        flush(function() {
+          expect(element._width).to.equal(50);
+          var bar = element.$$('.bar');
+          expect(bar).to.exist;
+          expect(bar.style.width).to.equal('50%');
+          done();
+        });
+      });
     });
 
     suite('horizontal-bar tests with custom listener', function() {
       var element;
 
-      setup(function() {
+      setup(function(done) {
         element = fixture('horizontal-bar-fixture');
+        element.showCheckbox = true;
         element.name = 'mySecondName';
         element.count = 5;
-        element.width = 50;
+        element.max = 10;
         element.toggleProperty = 'myProperty';
         element.toggleListener = {
           myProperty: function() {}
         };
+        flush(done);
       });
 
       test('properties are set to correct values', function() {
+        expect(element.showCheckbox).to.be.true;
         expect(element.name).to.equal('mySecondName');
         expect(element.count).to.equal(5);
-        expect(element.width).to.equal(50);
+        expect(element.max).to.equal(10);
         expect(element.selected).to.be.false;
         expect(element.toggleProperty).to.equal('myProperty');
         expect(element.toggleListener).to.be.an('Object');
         expect(element.toggleListener.myProperty).to.be.a('Function');
+        expect(element._width).to.equal(50);
       });
 
       test('does have a paper-checkbox', function() {
@@ -160,6 +194,50 @@
         flush(function() {
           element.$$('paper-checkbox').fire('change');
         });
+      });
+    });
+
+    suite('horizontal-bar without checkbox tests', function() {
+      var element;
+
+      setup(function(done) {
+        element = fixture('horizontal-bar-fixture');
+        element.name = 'myName';
+        element.count = 500;
+        element.max = 500;
+        flush(done);
+      });
+
+      test('properties are set to correct values', function() {
+        expect(element.showCheckbox).to.be.false;
+        expect(element.name).to.equal('myName');
+        expect(element.count).to.equal(500);
+        expect(element.max).to.equal(500);
+        expect(element.selected).to.be.false;
+        expect(element.toggleProperty).to.equal('onToggle');
+        expect(element.toggleListener).to.be.an('Object');
+        expect(element.toggleListener.onToggle).to.be.a('Function');
+        expect(element._width).to.equal(100);
+      });
+
+      test('does not have a paper-checkbox', function() {
+        var checkbox = element.$$('paper-checkbox');
+        expect(checkbox).to.not.exist;
+      });
+
+      test('does have a bar', function() {
+        var bar = element.$$('.bar');
+        expect(bar).to.exist;
+        expect(bar.style.width).to.equal('100%');
+      });
+
+      test('displays name and count', function() {
+        var barTitle = element.$$('.bar-title');
+        var barCount = element.$$('.bar-count');
+        expect(barTitle).to.exist;
+        expect(barCount).to.exist;
+        expect(barTitle.innerText).to.equal('myName');
+        expect(barCount.innerText).to.equal('500');
       });
     });
   </script>
