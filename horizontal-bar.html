@@ -96,6 +96,11 @@ Custom property                | Description                   | Default
         position: relative;
         text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
       }
+
+      a {
+        color: var(--primary-text-color);
+      }
+
     </style>
 
     <div class="layout horizontal row-wrapper">
@@ -103,13 +108,26 @@ Custom property                | Description                   | Default
         <paper-checkbox class="bar-checkbox" name="[[name]]" checked="[[selected]]" on-change="_onToggle"></paper-checkbox>
       </template>
       <div class="layout horizontal center center-justified bar-wrapper">
-        <div class="bar" style$="width: [[_width]]%;"></div>
-        <div class="bar-title flex">
-          [[name]]
-        </div>
-        <div class="bar-count flex-none">
-          [[count]]
-        </div>
+        <template is="dom-if" if="{{linkValue}}">
+          <a class="layout horizontal center center-justified bar-wrapper" href="{{linkValue}}">
+            <div class="bar" style$="width: [[_width]]%;"></div>
+            <div class="bar-title flex">
+              [[name]]
+            </div>
+            <div class="bar-count flex-none">
+              [[count]]
+            </div>
+          </a>
+        </template>
+        <template is="dom-if" if="{{!linkValue}}">
+          <div class="bar" style$="width: [[_width]]%;"></div>
+          <div class="bar-title flex">
+            [[name]]
+          </div>
+          <div class="bar-count flex-none">
+            [[count]]
+          </div>
+        </template>
       </div>
     </div>
   </template>
@@ -164,7 +182,7 @@ Custom property                | Description                   | Default
         /**
          * (Optional)
          *
-         * Whether to show a checkbox to the right of the horizontal bar.
+         * Whether to show a checkbox to the left of the horizontal bar.
          *
          * @type {Boolean}
          * @default false
@@ -217,6 +235,18 @@ Custom property                | Description                   | Default
         toggleProperty: {
           type: String,
           value: 'onToggle'
+        },
+
+        /**
+         * (Optional)
+         *
+         * URL to use for link.
+         *
+         * @type {String}
+         */
+        linkValue: {
+          type: String,
+          value: null
         },
 
         /**

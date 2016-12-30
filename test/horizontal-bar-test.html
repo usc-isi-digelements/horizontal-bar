@@ -45,6 +45,7 @@ limitations under the License.
 
       test('properties are set to correct values', function() {
         expect(element.showCheckbox).to.be.true;
+        expect(element.linkValue).to.equal(null);
         expect(element.name).to.equal('myName');
         expect(element.count).to.equal(500);
         expect(element.max).to.equal(500);
@@ -66,6 +67,11 @@ limitations under the License.
         var bar = element.$$('.bar');
         expect(bar).to.exist;
         expect(bar.style.width).to.equal('100%');
+      });
+
+      test('does not have a link', function() {
+        var link = element.$$('a');
+        expect(link).to.not.exist;
       });
 
       test('displays name and count', function() {
@@ -213,12 +219,13 @@ limitations under the License.
       });
     });
 
-    suite('horizontal-bar without checkbox tests', function() {
+    suite('horizontal-bar without checkbox and with links tests', function() {
       var element;
 
       setup(function(done) {
         element = fixture('horizontal-bar-fixture');
         element.name = 'myName';
+        element.linkValue = 'somelink.html';
         element.count = 500;
         element.max = 500;
         flush(done);
@@ -234,6 +241,12 @@ limitations under the License.
         expect(element.toggleListener).to.be.an('Object');
         expect(element.toggleListener.onToggle).to.be.a('Function');
         expect(element._width).to.equal(100);
+      });
+
+      test('does have a link', function() {
+        var link = element.$$('a');
+        expect(link).to.exist;
+        expect(link.getAttribute('href')).to.equal('somelink.html');
       });
 
       test('does not have a paper-checkbox', function() {
