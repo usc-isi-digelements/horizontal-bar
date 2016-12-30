@@ -98,9 +98,13 @@ Custom property                | Description                   | Default
       }
 
       a {
-        color: var(--primary-text-color);
+        color: var(--horizontal-bar-title-color, --primary-text-color);
+        padding: 0 5px;
+        position: relative;
+        text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
-
     </style>
 
     <div class="layout horizontal row-wrapper">
