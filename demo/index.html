@@ -23,11 +23,18 @@ limitations under the License.
 </head>
 
 <body unresolved>
+  <style>
+    horizontal-bar {
+      --horizontal-bar-color: gray;
+    }
+  </style>
+
   <template is="dom-bind" id="demo">
-    <p>Show Checkbox: true</p>
     <p>Name: Horizontal Bar With Checkbox</p>
     <p>Count: 500</p>
     <p>Max: 500</p>
+    <p>Show Checkbox: true</p>
+    <p>Checkbox Tooltip: 'My Tooltip'</p>
     <p>Toggle Property: toggle</p>
     <p>Toggle Listener: { toggle: function() { console.log('Selected:  ' + selected); } }</p>
     <p>Selected: [[selected]]</p>
@@ -36,21 +43,46 @@ limitations under the License.
       name="Horizontal Bar With Checkbox"
       count="500"
       max="500"
+      checkbox-tooltip="My Tooltip"
       selected="{{selected}}"
       toggle-property="toggle"
       toggle-listener="[[toggleListener]]">
     </horizontal-bar>
 
+    <p>Name: Horizontal Bar With Icon</p>
+    <p>Count: 500</p>
+    <p>Max: 500</p>
+    <p>Icon: 'icons:polymer'</p>
+    <p>Style Class: 'myStyleClass'</p>
+
+    <horizontal-bar
+      name="Horizontal Bar With Icon"
+      count="500"
+      max="500"
+      icon="icons:polymer"
+      style-class="myStyleClass">
+    </horizontal-bar>
+
+    <p>Name: Horizontal Bar With Link</p>
+    <p>Count: 500</p>
+    <p>Max: 500</p>
+    <p>Link Value: http://www.nextcentury.com</p>
+
+    <horizontal-bar
+      name="Horizontal Bar With Link"
+      count="500"
+      max="500"
+      link-value="http://www.nextcentury.com">
+    </horizontal-bar>
+
     <p>Name: One Hundred Percent</p>
-    <p>Link Value: 'index.html'</p>
     <p>Count: 500</p>
     <p>Max: 500</p>
 
     <horizontal-bar
       name="One Hundred Percent"
       count="500"
-      max="500"
-      link-value="index.html">
+      max="500">
     </horizontal-bar>
 
     <p>Name: Fifty Percent</p>
