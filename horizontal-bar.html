@@ -77,6 +77,7 @@ Custom property                      | Description                              
         height: var(--horizontal-bar-height, 20px);
         width: 100%;
         position: relative;
+        min-width: 0;
       }
 
       .bar {
@@ -136,7 +137,7 @@ Custom property                      | Description                              
             [[name]]
           </div>
         </template>
-        <div class="bar-label bar-count flex-none">
+        <div class="bar-label bar-count">
           [[count]]
         </div>
       </div>
