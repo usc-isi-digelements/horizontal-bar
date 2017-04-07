@@ -238,8 +238,8 @@ limitations under the License.
         element = fixture('horizontal-bar-fixture');
         element.name = 'myName';
         element.linkValue = 'somelink.html';
-        element.count = 500;
-        element.max = 500;
+        element.count = 5000;
+        element.max = 5000;
         flush(done);
       });
 
@@ -247,8 +247,8 @@ limitations under the License.
         expect(element.showCheckbox).to.be.false;
         expect(element.linkValue).to.equal('somelink.html');
         expect(element.name).to.equal('myName');
-        expect(element.count).to.equal(500);
-        expect(element.max).to.equal(500);
+        expect(element.count).to.equal(5000);
+        expect(element.max).to.equal(5000);
         expect(element.icon).to.equal('');
         expect(element.styleClass).to.equal('');
         expect(element.checkboxTooltip).to.equal('');
@@ -287,7 +287,7 @@ limitations under the License.
         expect(barTitle).to.exist;
         expect(barCount).to.exist;
         expect(barTitle.innerText).to.equal('myName');
-        expect(barCount.innerText).to.equal('500');
+        expect(barCount.innerText).to.equal('5,000');
       });
     });
 
@@ -297,8 +297,8 @@ limitations under the License.
       setup(function(done) {
         element = fixture('horizontal-bar-fixture');
         element.name = 'myName';
-        element.count = 500;
-        element.max = 500;
+        element.count = 50000;
+        element.max = 50000;
         element.icon = 'icons:polymer';
         element.styleClass = 'myStyleClass';
         flush(done);
@@ -308,8 +308,8 @@ limitations under the License.
         expect(element.showCheckbox).to.be.false;
         expect(element.linkValue).to.equal(null);
         expect(element.name).to.equal('myName');
-        expect(element.count).to.equal(500);
-        expect(element.max).to.equal(500);
+        expect(element.count).to.equal(50000);
+        expect(element.max).to.equal(50000);
         expect(element.icon).to.equal('icons:polymer');
         expect(element.styleClass).to.equal('myStyleClass');
         expect(element.checkboxTooltip).to.equal('');
@@ -350,7 +350,7 @@ limitations under the License.
         expect(barTitle).to.exist;
         expect(barCount).to.exist;
         expect(barTitle.innerText).to.equal('myName');
-        expect(barCount.innerText).to.equal('500');
+        expect(barCount.innerText).to.equal('50,000');
       });
     });
   </script>
