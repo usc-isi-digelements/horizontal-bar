@@ -45,11 +45,11 @@ limitations under the License.
 
       test('properties are set to correct values', function() {
         expect(element.showCheckbox).to.be.true;
-        expect(element.linkValue).to.equal(null);
         expect(element.name).to.equal('myName');
         expect(element.count).to.equal(500);
-        expect(element.max).to.equal(500);
         expect(element.icon).to.equal('');
+        expect(element.link).to.equal('');
+        expect(element.max).to.equal(500);
         expect(element.styleClass).to.equal('');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
@@ -165,11 +165,11 @@ limitations under the License.
 
       test('properties are set to correct values', function() {
         expect(element.showCheckbox).to.be.true;
-        expect(element.linkValue).to.equal(null);
         expect(element.name).to.equal('mySecondName');
         expect(element.count).to.equal(5);
-        expect(element.max).to.equal(10);
         expect(element.icon).to.equal('');
+        expect(element.link).to.equal('');
+        expect(element.max).to.equal(10);
         expect(element.styleClass).to.equal('');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
@@ -237,19 +237,19 @@ limitations under the License.
       setup(function(done) {
         element = fixture('horizontal-bar-fixture');
         element.name = 'myName';
-        element.linkValue = 'somelink.html';
         element.count = 5000;
+        element.link = 'http://nextcentury.com';
         element.max = 5000;
         flush(done);
       });
 
       test('properties are set to correct values', function() {
         expect(element.showCheckbox).to.be.false;
-        expect(element.linkValue).to.equal('somelink.html');
         expect(element.name).to.equal('myName');
         expect(element.count).to.equal(5000);
-        expect(element.max).to.equal(5000);
         expect(element.icon).to.equal('');
+        expect(element.link).to.equal('http://nextcentury.com');
+        expect(element.max).to.equal(5000);
         expect(element.styleClass).to.equal('');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
@@ -262,7 +262,7 @@ limitations under the License.
       test('does have a link', function() {
         var link = element.$$('a');
         expect(link).to.exist;
-        expect(link.getAttribute('href')).to.equal('somelink.html');
+        expect(link.getAttribute('href')).to.equal('http://nextcentury.com');
       });
 
       test('does not have a paper-checkbox', function() {
@@ -298,19 +298,19 @@ limitations under the License.
         element = fixture('horizontal-bar-fixture');
         element.name = 'myName';
         element.count = 50000;
-        element.max = 50000;
         element.icon = 'icons:polymer';
+        element.max = 50000;
         element.styleClass = 'myStyleClass';
         flush(done);
       });
 
       test('properties are set to correct values', function() {
         expect(element.showCheckbox).to.be.false;
-        expect(element.linkValue).to.equal(null);
         expect(element.name).to.equal('myName');
         expect(element.count).to.equal(50000);
-        expect(element.max).to.equal(50000);
         expect(element.icon).to.equal('icons:polymer');
+        expect(element.link).to.equal('');
+        expect(element.max).to.equal(50000);
         expect(element.styleClass).to.equal('myStyleClass');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;

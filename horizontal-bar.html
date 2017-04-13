@@ -100,6 +100,7 @@ Custom property                      | Description                              
         text-overflow: ellipsis;
         text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
         white-space: normal;
+        word-break: break-word;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
       }
@@ -127,12 +128,12 @@ Custom property                      | Description                              
       </template>
       <div class="layout horizontal bar-wrapper">
         <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
-        <template is="dom-if" if="[[linkValue]]">
-          <a class="bar-label bar-title flex" href="[[linkValue]]" title="Open [[name]]">
+        <template is="dom-if" if="[[link]]">
+          <a class="bar-label bar-title flex" href="[[link]]" title="Open [[name]]">
             [[name]]
           </a>
         </template>
-        <template is="dom-if" if="[[!linkValue]]">
+        <template is="dom-if" if="[[!link]]">
           <div class="bar-label bar-title flex">
             [[name]]
           </div>
@@ -155,19 +156,6 @@ Custom property                      | Description                              
         /**
          * (Optional)
          *
-         * The name to show on the left of the bar.
-         *
-         * @type {String}
-         * @default ''
-         */
-        name: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
          * The count to show on the right of the bar.
          *
          * @type {Number}
@@ -176,6 +164,30 @@ Custom property                      | Description                              
         count: {
           type: Number,
           value: 0
+        },
+
+        /**
+         * (Optional)
+         *
+         * The icon shown to the left of the horizontal bar.  None by default.
+         *
+         * @type {String}
+         */
+        icon: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * The URL to use for link.
+         *
+         * @type {String}
+         */
+        link: {
+          type: String,
+          value: ''
         },
 
         /**
@@ -194,11 +206,12 @@ Custom property                      | Description                              
         /**
          * (Optional)
          *
-         * The icon shown to the left of the horizontal bar.  None by default.
+         * The name to show on the left of the bar.
          *
          * @type {String}
+         * @default ''
          */
-        icon: {
+        name: {
           type: String,
           value: ''
         },
@@ -250,9 +263,9 @@ Custom property                      | Description                              
          * @default false
          */
         selected: {
+          notify: true,
           type: Boolean,
-          value: false,
-          notify: true
+          value: false
         },
 
         /**
@@ -284,18 +297,6 @@ Custom property                      | Description                              
         toggleProperty: {
           type: String,
           value: 'onToggle'
-        },
-
-        /**
-         * (Optional)
-         *
-         * URL to use for link.
-         *
-         * @type {String}
-         */
-        linkValue: {
-          type: String,
-          value: null
         },
 
         /**
@@ -331,7 +332,7 @@ Custom property                      | Description                              
        * @private
        */
       _formatNumber: function(number) {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        return number ? number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',') : '0';
       },
 
       /**
