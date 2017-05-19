@@ -51,6 +51,7 @@ limitations under the License.
         expect(element.link).to.equal('');
         expect(element.max).to.equal(500);
         expect(element.styleClass).to.equal('');
+        expect(element.target).to.equal('_self');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
         expect(element.toggleProperty).to.equal('onToggle');
@@ -171,6 +172,7 @@ limitations under the License.
         expect(element.link).to.equal('');
         expect(element.max).to.equal(10);
         expect(element.styleClass).to.equal('');
+        expect(element.target).to.equal('_self');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
         expect(element.toggleProperty).to.equal('myProperty');
@@ -251,6 +253,7 @@ limitations under the License.
         expect(element.link).to.equal('http://nextcentury.com');
         expect(element.max).to.equal(5000);
         expect(element.styleClass).to.equal('');
+        expect(element.target).to.equal('_self');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
         expect(element.toggleProperty).to.equal('onToggle');
@@ -263,6 +266,7 @@ limitations under the License.
         var link = element.$$('a');
         expect(link).to.exist;
         expect(link.getAttribute('href')).to.equal('http://nextcentury.com');
+        expect(link.getAttribute('target')).to.equal('_self');
       });
 
       test('does not have a paper-checkbox', function() {
@@ -312,6 +316,7 @@ limitations under the License.
         expect(element.link).to.equal('');
         expect(element.max).to.equal(50000);
         expect(element.styleClass).to.equal('myStyleClass');
+        expect(element.target).to.equal('_self');
         expect(element.checkboxTooltip).to.equal('');
         expect(element.selected).to.be.false;
         expect(element.toggleProperty).to.equal('onToggle');

@@ -129,7 +129,7 @@ Custom property                      | Description                              
       <div class="layout horizontal bar-wrapper">
         <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
         <template is="dom-if" if="[[link]]">
-          <a class="bar-label bar-title flex" href="[[link]]" title="Open [[name]]">
+          <a class="bar-label bar-title flex" href="[[link]]" target="[[target]]" title="Open [[name]]">
             [[name]]
           </a>
         </template>
@@ -266,6 +266,19 @@ Custom property                      | Description                              
           notify: true,
           type: Boolean,
           value: false
+        },
+
+        /**
+         * (Optional)
+         *
+         * The target page of the link.
+         *
+         * @type {String}
+         * @default '_self'
+         */
+        target: {
+          type: String,
+          value: '_self'
         },
 
         /**
