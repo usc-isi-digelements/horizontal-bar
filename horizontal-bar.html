@@ -18,7 +18,6 @@ limitations under the License.
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../paper-checkbox/paper-checkbox.html">
 <link rel="import" href="../paper-styles/color.html">
 
 <!--
@@ -60,18 +59,15 @@ Custom property                      | Description                              
       iron-icon {
         --iron-icon-height: 20px;
         --iron-icon-width: 20px;
-        margin-right: 4px;
+        margin-right: 5px;
+      }
+
+      .checkbox {
+        cursor: pointer;
       }
 
       .row-wrapper {
         margin-top: 5px;
-      }
-
-      .bar-checkbox {
-        --paper-checkbox-label-spacing: 4px;
-        --paper-checkbox-size: 16px;
-        position: relative;
-        top: 2px;
       }
 
       .bar-wrapper {
@@ -121,10 +117,10 @@ Custom property                      | Description                              
 
     <div class="layout horizontal row-wrapper">
       <template is="dom-if" if="[[showCheckbox]]">
-        <paper-checkbox class="bar-checkbox" title="[[checkboxTooltip]]" name="[[name]]" checked="[[selected]]" on-change="_onToggle"></paper-checkbox>
+        <iron-icon class="checkbox" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
       </template>
       <template is="dom-if" if="[[icon]]">
-        <iron-icon class$="[[styleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+        <iron-icon class$="icon [[styleClass]]" icon$="[[icon]]" item-icon></iron-icon>
       </template>
       <div class="layout horizontal bar-wrapper">
         <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
@@ -335,6 +331,17 @@ Custom property                      | Description                              
       _computeWidth: function(count, max) {
         var width = max ? Math.round((count / max) * 100) : 0;
         return width === 0 && count ? 1 : width;
+      },
+
+      /**
+       * Returns the polymer checkbox icon string for the given selected status.
+       *
+       * @param {Boolean} selected
+       * @return {String}
+       * @private
+       */
+      _getCheckboxIcon: function(selected) {
+        return selected ? 'check-box' : 'check-box-outline-blank';
       },
 
       /**

@@ -60,11 +60,11 @@ limitations under the License.
         expect(element._width).to.equal(100);
       });
 
-      test('does have a paper-checkbox', function() {
-        var checkbox = element.$$('paper-checkbox');
+      test('does have a checkbox', function() {
+        var checkbox = element.$$('iron-icon.checkbox');
         expect(checkbox).to.exist;
         expect(checkbox.name).to.equal('myName');
-        expect(checkbox.checked).to.be.false;
+        expect(checkbox.icon).to.equal('check-box-outline-blank');
       });
 
       test('does have a bar', function() {
@@ -74,7 +74,7 @@ limitations under the License.
       });
 
       test('does not have an icon', function() {
-        var icon = element.$$('iron-icon');
+        var icon = element.$$('iron-icon.icon');
         expect(icon).to.not.exist;
       });
 
@@ -117,7 +117,7 @@ limitations under the License.
           }
         };
         flush(function() {
-          element.$$('paper-checkbox').fire('change');
+          element.$$('iron-icon.checkbox').fire('tap');
         });
       });
 
@@ -181,11 +181,11 @@ limitations under the License.
         expect(element._width).to.equal(50);
       });
 
-      test('does have a paper-checkbox', function() {
-        var checkbox = element.$$('paper-checkbox');
+      test('does have a checkbox', function() {
+        var checkbox = element.$$('iron-icon.checkbox');
         expect(checkbox).to.exist;
         expect(checkbox.name).to.equal('mySecondName');
-        expect(checkbox.checked).to.be.false;
+        expect(checkbox.icon).to.equal('check-box-outline-blank');
       });
 
       test('does have a bar', function() {
@@ -228,7 +228,7 @@ limitations under the License.
           }
         };
         flush(function() {
-          element.$$('paper-checkbox').fire('change');
+          element.$$('iron-icon.checkbox').fire('tap');
         });
       });
     });
@@ -269,8 +269,8 @@ limitations under the License.
         expect(link.getAttribute('target')).to.equal('_self');
       });
 
-      test('does not have a paper-checkbox', function() {
-        var checkbox = element.$$('paper-checkbox');
+      test('does not have a checkbox', function() {
+        var checkbox = element.$$('iron-icon.checkbox');
         expect(checkbox).to.not.exist;
       });
 
@@ -326,14 +326,14 @@ limitations under the License.
       });
 
       test('does have an icon', function() {
-        var icon = element.$$('iron-icon');
+        var icon = element.$$('iron-icon.icon');
         expect(icon).to.exist;
         expect(icon.getAttribute('icon')).to.equal('icons:polymer');
         expect((icon.className.split(' ').indexOf('myStyleClass') >= 0)).to.be.true;
       });
 
-      test('does not have a paper-checkbox', function() {
-        var checkbox = element.$$('paper-checkbox');
+      test('does not have a checkbox', function() {
+        var checkbox = element.$$('iron-icon.checkbox');
         expect(checkbox).to.not.exist;
       });
 
