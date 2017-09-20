@@ -53,7 +53,9 @@ Custom property                      | Description                              
 
     <style>
       :host {
-        display: block;
+        @apply --layout-horizontal;
+        @apply --layout-center;
+        margin-top: 5px;
       }
 
       iron-icon {
@@ -64,10 +66,6 @@ Custom property                      | Description                              
 
       .checkbox {
         cursor: pointer;
-      }
-
-      .row-wrapper {
-        margin-top: 5px;
       }
 
       .bar-wrapper {
@@ -89,7 +87,7 @@ Custom property                      | Description                              
       .bar-label {
         display: -webkit-box;
         font-size: 14px;
-        font-weight: bold;
+        font-weight: 500;
         height: 20px;
         line-height: 20px;
         overflow: hidden;
@@ -284,28 +282,26 @@ Custom property                      | Description                              
       }
     </style>
 
-    <div class="layout horizontal row-wrapper">
-      <template is="dom-if" if="[[showCheckbox]]">
-        <iron-icon class="checkbox" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
+    <template is="dom-if" if="[[showCheckbox]]">
+      <iron-icon class="checkbox" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
+    </template>
+    <template is="dom-if" if="[[icon]]">
+      <iron-icon class$="icon [[styleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+    </template>
+    <div class="layout horizontal bar-wrapper">
+      <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
+      <template is="dom-if" if="[[link]]">
+        <a class="bar-label bar-title flex" href="[[link]]" target="[[target]]" title="Open [[name]]">
+          [[name]]
+        </a>
       </template>
-      <template is="dom-if" if="[[icon]]">
-        <iron-icon class$="icon [[styleClass]]" icon$="[[icon]]" item-icon></iron-icon>
-      </template>
-      <div class="layout horizontal bar-wrapper">
-        <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
-        <template is="dom-if" if="[[link]]">
-          <a class="bar-label bar-title flex" href="[[link]]" target="[[target]]" title="Open [[name]]">
-            [[name]]
-          </a>
-        </template>
-        <template is="dom-if" if="[[!link]]">
-          <div class="bar-label bar-title flex">
-            [[name]]
-          </div>
-        </template>
-        <div class="bar-label bar-count">
-          [[_formatNumber(count)]]
+      <template is="dom-if" if="[[!link]]">
+        <div class="bar-label bar-title flex">
+          [[name]]
         </div>
+      </template>
+      <div class="bar-label bar-count">
+        [[_formatNumber(count)]]
       </div>
     </div>
   </template>
