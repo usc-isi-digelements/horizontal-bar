@@ -21,7 +21,7 @@ limitations under the License.
 <link rel="import" href="../paper-styles/color.html">
 
 <!--
-A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with a custom toggle behavior, an icon, and a link.
+A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with toggle behavior, an icon, an image, or a link.
 
 ### Example
 ```html
@@ -53,8 +53,7 @@ Custom property                      | Description                              
 
     <style>
       :host {
-        @apply --layout-horizontal;
-        @apply --layout-center;
+        @apply --layout-vertical;
         margin-top: 5px;
       }
 
@@ -62,6 +61,12 @@ Custom property                      | Description                              
         --iron-icon-height: 20px;
         --iron-icon-width: 20px;
         margin-right: 5px;
+      }
+
+      iron-image {
+        --iron-image-height: 50px;
+        --iron-image-width: 50px;
+        margin-top: 5px;
       }
 
       .checkbox {
@@ -282,28 +287,36 @@ Custom property                      | Description                              
       }
     </style>
 
-    <template is="dom-if" if="[[showCheckbox]]">
-      <iron-icon class="checkbox" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
-    </template>
-    <template is="dom-if" if="[[icon]]">
-      <iron-icon class$="icon [[styleClass]]" icon$="[[icon]]" item-icon></iron-icon>
-    </template>
-    <div class="layout horizontal bar-wrapper">
-      <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
-      <template is="dom-if" if="[[link]]">
-        <a class="bar-label bar-title flex" href="[[link]]" target="[[target]]" title="Open [[name]]">
-          [[name]]
-        </a>
+    <div class="layout horizontal center">
+      <template is="dom-if" if="[[showCheckbox]]">
+        <iron-icon class="checkbox" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
       </template>
-      <template is="dom-if" if="[[!link]]">
-        <div class="bar-label bar-title flex">
-          [[name]]
+
+      <template is="dom-if" if="[[icon]]">
+        <iron-icon class$="icon [[styleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+      </template>
+
+      <div class="layout horizontal bar-wrapper">
+        <div class$="bar [[styleClass]]" style$="width: [[_width]]%;"></div>
+        <template is="dom-if" if="[[link]]">
+          <a class="bar-label bar-title flex" href="[[link]]" target="[[target]]" title="Open [[name]]">
+            [[name]]
+          </a>
+        </template>
+        <template is="dom-if" if="[[!link]]">
+          <div class="bar-label bar-title flex">
+            [[name]]
+          </div>
+        </template>
+        <div class="bar-label bar-count">
+          [[_formatNumber(count)]]
         </div>
-      </template>
-      <div class="bar-label bar-count">
-        [[_formatNumber(count)]]
       </div>
     </div>
+
+    <template is="dom-if" if="[[image]]">
+      <iron-image class="layout self-center" src="[[image]]"></iron-image>
+    </template>
   </template>
 
   <script>
@@ -335,6 +348,18 @@ Custom property                      | Description                              
          * @type {String}
          */
         icon: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * The source of an image show below the horizontal bar.  None by default.
+         *
+         * @type {String}
+         */
+        image: {
           type: String,
           value: ''
         },

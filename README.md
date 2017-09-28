@@ -1,6 +1,6 @@
 # horizontal-bar
 
-A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with a custom toggle behavior, an icon, and a link.
+A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with toggle behavior, an icon, an image, or a link.
 
 ### Example
 ```html
