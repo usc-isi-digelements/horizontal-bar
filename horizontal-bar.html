@@ -543,7 +543,7 @@ Custom property                      | Description                              
        */
       _computeWidth: function(count, max) {
         var width = max ? Math.round((count / max) * 100) : 0;
-        return width === 0 && count ? 1 : width;
+        return width === 0 && count ? 1 : Math.min(width, 100);
       },
 
       /**

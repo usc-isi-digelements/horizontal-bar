@@ -1,7 +1,7 @@
 {
   "name": "horizontal-bar",
   "description": "A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with toggle behavior, an icon, an image, or a link.",
-  "version": "2.2.4",
+  "version": "2.2.5",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
   "keywords": [
