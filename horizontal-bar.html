@@ -69,6 +69,16 @@ Custom property                      | Description                              
         margin-top: 5px;
       }
 
+      .small-blur {
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+      }
+
+      .large-blur {
+        -webkit-filter: blur(25px);
+        filter: blur(25px);
+      }
+
       .checkbox {
         cursor: pointer;
       }
@@ -315,7 +325,7 @@ Custom property                      | Description                              
     </div>
 
     <template is="dom-if" if="[[image]]">
-      <iron-image class="layout self-center" src="[[image]]"></iron-image>
+      <iron-image class$="layout self-center [[imageStyleClass]]" src="[[image]]"></iron-image>
     </template>
   </template>
 
@@ -423,6 +433,19 @@ Custom property                      | Description                              
          * @default ''
          */
         checkboxTooltip: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * The style class for the image.
+         *
+         * @type {String}
+         * @default ''
+         */
+        imageStyleClass: {
           type: String,
           value: ''
         },
