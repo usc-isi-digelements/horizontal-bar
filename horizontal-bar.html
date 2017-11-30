@@ -18,6 +18,7 @@ limitations under the License.
 <link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-styles/color.html">
 
 <!--
@@ -57,13 +58,13 @@ Custom property                      | Description                              
         margin-top: 5px;
       }
 
-      iron-icon {
+      .icon {
         --iron-icon-height: 20px;
         --iron-icon-width: 20px;
         margin-right: 5px;
       }
 
-      iron-image {
+      .image {
         --iron-image-height: 40px;
         --iron-image-width: auto;
         margin-top: 5px;
@@ -81,7 +82,10 @@ Custom property                      | Description                              
 
       .checkbox {
         color: var(--secondary-text-color);
-        cursor: pointer;
+        height: 20px;
+        width: 20px;
+        margin-right: 5px;
+        padding: 0;
       }
 
       .checkbox:hover,
@@ -305,7 +309,14 @@ Custom property                      | Description                              
 
     <div class="layout horizontal center">
       <template is="dom-if" if="[[showCheckbox]]">
-        <iron-icon class$="checkbox [[_getCheckboxStyleClass(selected)]]" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
+        <paper-icon-button
+          class$="checkbox [[_getCheckboxStyleClass(selected)]]"
+          icon$="[[_getCheckboxIcon(selected)]]"
+          title="[[checkboxTooltip]]"
+          name="[[name]]"
+          noink
+          on-tap="_onToggle">
+        </paper-icon-button>
       </template>
 
       <template is="dom-if" if="[[icon]]">
@@ -331,7 +342,7 @@ Custom property                      | Description                              
     </div>
 
     <template is="dom-if" if="[[image]]">
-      <iron-image class$="layout self-center [[imageStyleClass]]" src="[[image]]"></iron-image>
+      <iron-image class$="image layout self-center [[imageStyleClass]]" src="[[image]]"></iron-image>
     </template>
   </template>
 

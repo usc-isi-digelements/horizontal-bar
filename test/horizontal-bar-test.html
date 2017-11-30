@@ -62,7 +62,7 @@ limitations under the License.
       });
 
       test('does have a checkbox', function() {
-        var checkbox = element.$$('iron-icon.checkbox');
+        var checkbox = element.$$('paper-icon-button.checkbox');
         expect(checkbox).to.exist;
         expect(checkbox.name).to.equal('myName');
         expect(checkbox.icon).to.equal('check-box-outline-blank');
@@ -123,7 +123,7 @@ limitations under the License.
           }
         };
         flush(function() {
-          element.$$('iron-icon.checkbox').fire('tap');
+          element.$$('paper-icon-button.checkbox').fire('tap');
         });
       });
 
@@ -189,7 +189,7 @@ limitations under the License.
       });
 
       test('does have a checkbox', function() {
-        var checkbox = element.$$('iron-icon.checkbox');
+        var checkbox = element.$$('paper-icon-button.checkbox');
         expect(checkbox).to.exist;
         expect(checkbox.name).to.equal('mySecondName');
         expect(checkbox.icon).to.equal('check-box-outline-blank');
@@ -211,7 +211,7 @@ limitations under the License.
       });
 
       test('_onToggle does toggle selected', function() {
-        var checkbox = element.$$('iron-icon.checkbox');
+        var checkbox = element.$$('paper-icon-button.checkbox');
         element._onToggle();
         expect(element.selected).to.be.true;
         expect(checkbox.classList.contains('selected')).to.be.true;
@@ -238,7 +238,7 @@ limitations under the License.
           }
         };
         flush(function() {
-          element.$$('iron-icon.checkbox').fire('tap');
+          element.$$('paper-icon-button.checkbox').fire('tap');
         });
       });
     });
@@ -281,12 +281,12 @@ limitations under the License.
       });
 
       test('does not have a checkbox', function() {
-        var checkbox = element.$$('iron-icon.checkbox');
+        var checkbox = element.$$('paper-icon-button.checkbox');
         expect(checkbox).to.not.exist;
       });
 
       test('does not have an icon', function() {
-        var icon = element.$$('iron-icon');
+        var icon = element.$$('iron-icon.icon');
         expect(icon).to.not.exist;
       });
 
@@ -350,7 +350,7 @@ limitations under the License.
       });
 
       test('does not have a checkbox', function() {
-        var checkbox = element.$$('iron-icon.checkbox');
+        var checkbox = element.$$('paper-icon-button.checkbox');
         expect(checkbox).to.not.exist;
       });
 
@@ -419,7 +419,7 @@ limitations under the License.
       });
 
       test('does not have a checkbox', function() {
-        var checkbox = element.$$('iron-icon.checkbox');
+        var checkbox = element.$$('paper-icon-button.checkbox');
         expect(checkbox).to.not.exist;
       });
 
