@@ -211,10 +211,13 @@ limitations under the License.
       });
 
       test('_onToggle does toggle selected', function() {
+        var checkbox = element.$$('iron-icon.checkbox');
         element._onToggle();
         expect(element.selected).to.be.true;
+        expect(checkbox.classList.contains('selected')).to.be.true;
         element._onToggle();
         expect(element.selected).to.be.false;
+        expect(checkbox.classList.contains('selected')).to.be.false;
       });
 
       test('_onToggle does call toggleListener[toggleProperty]', function(done) {

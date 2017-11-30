@@ -80,7 +80,13 @@ Custom property                      | Description                              
       }
 
       .checkbox {
+        color: var(--secondary-text-color);
         cursor: pointer;
+      }
+
+      .checkbox:hover,
+      .checkbox.selected {
+        color: var(--primary-text-color);
       }
 
       .bar-wrapper {
@@ -299,7 +305,7 @@ Custom property                      | Description                              
 
     <div class="layout horizontal center">
       <template is="dom-if" if="[[showCheckbox]]">
-        <iron-icon class="checkbox" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
+        <iron-icon class$="checkbox [[_getCheckboxStyleClass(selected)]]" icon$="[[_getCheckboxIcon(selected)]]" title="[[checkboxTooltip]]" name="[[name]]" on-tap="_onToggle"></iron-icon>
       </template>
 
       <template is="dom-if" if="[[icon]]">
@@ -555,6 +561,17 @@ Custom property                      | Description                              
        */
       _getCheckboxIcon: function(selected) {
         return selected ? 'check-box' : 'check-box-outline-blank';
+      },
+
+      /**
+       * Returns the checkbox style class string for the given selected status.
+       *
+       * @param {Boolean} selected
+       * @return {String}
+       * @private
+       */
+      _getCheckboxStyleClass: function(selected) {
+        return selected ? 'selected' : '';
       },
 
       /**
