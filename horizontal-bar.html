@@ -110,18 +110,21 @@ Custom property                      | Description                              
       }
 
       .bar-label {
-        display: -webkit-box;
         font-size: 14px;
         font-weight: 500;
-        height: 20px;
         line-height: 20px;
-        overflow: hidden;
+        max-height: 20px;
+        min-height: 20px;
         padding: 0 5px;
         position: relative;
-        text-overflow: ellipsis;
         text-shadow: 1px 1px 0 rgba(255,255,255,0.5);
+
+        /* Needed to fix flexbox layout issues in newer browsers. */
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
         white-space: normal;
-        word-break: break-word;
+        word-break: break-all;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
       }
