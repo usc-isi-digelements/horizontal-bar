@@ -21,7 +21,7 @@ Custom property                      | Description                              
 `--horizontal-bar-count-color`       | The color of the count label.                      | --paper-grey-900
 `--horizontal-bar-height`            | The height of the bar.                             | 20px
 `--horizontal-bar-title-color`       | The color of the title label.                      | --paper-grey-900
-`--horizontal-bar-title-hover-color` | The color of the title label on hover (if a link). | --paper-grey-600
+`--horizontal-bar-title-hover-color` | The color of the title label on hover (if a link). | --paper-indigo-900
 
 ### Dependencies
 

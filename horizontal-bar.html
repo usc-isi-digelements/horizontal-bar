@@ -43,7 +43,7 @@ Custom property                      | Description                              
 `--horizontal-bar-count-color`       | The color of the count label.                      | --paper-grey-900
 `--horizontal-bar-height`            | The height of the bar.                             | 20px
 `--horizontal-bar-title-color`       | The color of the title label.                      | --paper-grey-900
-`--horizontal-bar-title-hover-color` | The color of the title label on hover (if a link). | --paper-grey-600
+`--horizontal-bar-title-hover-color` | The color of the title label on hover (if a link). | --paper-indigo-900
 
 @demo demo/index.html
 -->
@@ -81,7 +81,7 @@ Custom property                      | Description                              
       }
 
       .checkbox {
-        color: var(--secondary-text-color);
+        color: var(--paper-grey-600);
         height: 20px;
         width: 20px;
         margin-right: 5px;
@@ -90,7 +90,7 @@ Custom property                      | Description                              
 
       .checkbox:hover,
       .checkbox.selected {
-        color: var(--primary-text-color);
+        color: var(--paper-grey-900);
       }
 
       .bar-wrapper {
@@ -124,9 +124,7 @@ Custom property                      | Description                              
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
-        /* Use break-all for Firefox and override with break-word for Chrome and Safari. */
         word-break: break-all;
-        word-break: break-word;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
       }
@@ -140,7 +138,7 @@ Custom property                      | Description                              
       }
 
       a.bar-title:hover {
-        color: var(--horizontal-bar-title-hover-color, var(--paper-grey-600));
+        color: var(--horizontal-bar-title-hover-color, var(--paper-indigo-900));
       }
 
       .bar.amber {
