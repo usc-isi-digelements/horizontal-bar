@@ -9,18 +9,18 @@
     "polymer"
   ],
   "main": "horizontal-bar.html",
-  "homepage": "https://github.com/DigElements/horizontal-bar/",
+  "homepage": "https://github.com/usc-isi-digelements/horizontal-bar/",
   "ignore": [
     "/.*",
     "/test/"
   ],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "icon-button": "DigElements/icon-button#2.0.1",
+    "icon-button": "usc-isi-digelements/icon-button#2.0.1",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "iron-image": "PolymerElements/iron-image#^2.0.0",
     "paper-styles": "PolymerElements/paper-styles#^2.0.0",
-    "stylized-icon": "DigElements/stylized-icon#2.0.0"
+    "stylized-icon": "usc-isi-digelements/stylized-icon#2.0.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
