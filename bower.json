@@ -1,26 +1,21 @@
 {
   "name": "horizontal-bar",
-  "description": "A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with toggle behavior, an icon, an image, or a link.",
-  "version": "2.3.0",
+  "description":
+    "A Polymer Element showing a sized, labeled, colored bar with options for a checkbox with toggle behavior, an icon, an image, or a link.",
+  "version": "2.3.1",
   "authors": ["Next Century Corporation"],
   "license": "Apache-2.0",
-  "keywords": [
-    "web-component",
-    "polymer"
-  ],
+  "keywords": ["web-component", "polymer"],
   "main": "horizontal-bar.html",
   "homepage": "https://github.com/usc-isi-digelements/horizontal-bar/",
-  "ignore": [
-    "/.*",
-    "/test/"
-  ],
+  "ignore": ["/.*", "/test/"],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
-    "icon-button": "usc-isi-digelements/icon-button#2.0.1",
+    "icon-button": "usc-isi-digelements/icon-button#^2.0.2",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
     "iron-image": "PolymerElements/iron-image#^2.0.0",
     "paper-styles": "PolymerElements/paper-styles#^2.0.0",
-    "stylized-icon": "usc-isi-digelements/stylized-icon#2.0.0"
+    "stylized-icon": "usc-isi-digelements/stylized-icon#^2.0.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
